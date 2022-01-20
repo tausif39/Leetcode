@@ -1,58 +1,10 @@
 class Solution {
 public:
     
-    int maximum(vector<int>& nums)
-    {
-        int maxi=nums[0];
-        for(int i=1;i<nums.size();i++)
+        int findGCD(vector<int>& n) 
         {
-            if(maxi<nums[i])
-            {
-                maxi=nums[i];
-            }
-            
-            
-            
+            return __gcd(*min_element(begin(n), end(n)), *max_element(begin(n), end(n)));
         }
-        return maxi;
-    }
-    
-    int minimum(vector<int>& nums)
-    {
-        int mini=nums[0];
-        for(int i=1;i<nums.size();i++)
-        {
-            if(mini>nums[i])
-            {
-                mini=nums[i];
-            }
-            
-            
-            
-        }
-        return mini;
-    }
-    int GCD(int a,int b)
-    {
-        int ans;
-        if(a==0)return b;
-            
-        
-        return GCD(b%a,a);
-    }
         
     
-    int findGCD(vector<int>& nums) 
-    {
-        int b=*max_element(nums.begin(), nums.end());
-        int a=*min_element(nums.begin(), nums.end());
-        
-       
-   int hcf=GCD(a,b);
-        return hcf;
-            
-            
-            
-            
-    }
 };
