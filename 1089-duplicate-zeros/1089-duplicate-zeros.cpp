@@ -1,31 +1,18 @@
 class Solution {
 public:
-    void duplicateZeros(vector<int>& arr)
+    void duplicateZeros(vector<int>& arr) 
     {
-        vector<int>  v;
         
         for(int i=0;i<arr.size();i++)
         {
             if(arr[i]==0)
             {
-                
-                v.push_back(arr[i]);
-                if(v.size()==arr.size())break; ;
-                v.push_back(0);
-                if(v.size()==arr.size())break; ;
-                
+                arr.pop_back();
+                arr.insert(arr.begin()+i,0);
+                 ++i;        /// why? it will keep inserting 0
             }
             
-            
-            else v.push_back(arr[i]);
-            
-            if(v.size()==arr.size())break; ;
-    
-        }
-        for(int i=0;i<arr.size();i++)
-        {
-            arr[i]=v[i];
-        }
+        }    
         
     }
 };
