@@ -7,11 +7,12 @@ public:
         {
             if(arr[i]==0)
             {
-                arr.pop_back();
-                arr.insert(arr.begin()+i,0);
-                 ++i;        /// why? it will keep inserting 0
+                for(int j=arr.size()-1;j>=i+1;j--)
+                {
+                    arr[j]=arr[j-1];
+                }
+                i++;
             }
-            
         }    
         
     }
