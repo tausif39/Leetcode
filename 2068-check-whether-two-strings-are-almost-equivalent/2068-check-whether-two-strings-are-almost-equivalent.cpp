@@ -1,45 +1,14 @@
+// Time: O(N)
+// Space: O(1)
 class Solution {
 public:
-    
-    bool checkAlmostEquivalent(string word1, string word2) 
-    { 
-        
-        unordered_map<char , int > mp1;
-        
-      
-        
-        
-        for(int i=0;i<word1.size();i++)
-        {
-            ++mp1[word1[i]];
-            
+    bool checkAlmostEquivalent(string s, string t) {
+        int cnt[26] = {};
+        for (char c : s) cnt[c - 'a']++;
+        for (char c : t) cnt[c - 'a']--;
+        for (int i = 0; i < 26; ++i) {
+            if (abs(cnt[i]) > 3) return false;
         }
-        
-        for(int i=0;i<word2.size();i++)
-        {
-            
-            --mp1[word2[i]];
-        }
-        
-        for(int i=0;i<word1.size();i++)
-        {
-            if(abs(mp1[word1[i]])>3)
-            {
-                return false;
-            }
-            
-        }
-        
-        for(int i=0;i<word2.size();i++)
-        {
-            if(abs(mp1[word2[i]])>3)
-            {
-                return false;
-            }
-            
-        }
-        
         return true;
-        
     }
 };
