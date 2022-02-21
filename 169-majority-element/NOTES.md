@@ -1,1 +1,1 @@
-​
+**Majority voting Algo**
