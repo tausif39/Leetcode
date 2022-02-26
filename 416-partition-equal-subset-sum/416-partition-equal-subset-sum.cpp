@@ -30,7 +30,7 @@ public:
             
             
       
-        return t[indx][target]=  a|b;
+        return  t[indx][target]= a|b;
     }
     
     
