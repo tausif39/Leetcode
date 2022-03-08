@@ -1,37 +1,24 @@
 class Solution {
 public:
-    
-     void  helper (int indx, vector<int>& ds,vector<int> arr,vector< vector<int> > &ans)
+    vector<vector<int>> subsets(vector<int>& nums)
     {
-        if(indx==arr.size())
+         vector<vector<int>> ans;
+        int n=nums.size();
+        
+        for(int i=0;i<(1<<n);i++)
         {
-            ans.push_back(ds);
-            return ;
+            vector<int> level;
+            for(int j=0;j<n;j++)
+            {
+                if(i&(1<<j))
+                {
+                    level.push_back(nums[j]);
+                }
+                
+            }
+            
+            ans.push_back(level);
         }
-        
-        
-        //take or not take
-        
-        //take
-        ds.push_back(arr[indx]);
-        
-        helper(indx+1,ds,arr,ans);
-        
-        ds.pop_back();
-        
-        
-        // not take
-        
-         helper(indx+1,ds,arr,ans);
-        
-        
-    }
-    
-    vector<vector<int>> subsets(vector<int>& nums) {
-        vector<int> ds;
-        vector< vector<int> > ans;
-        
-         helper (0,ds,nums,ans );
         
         return ans;
     }
