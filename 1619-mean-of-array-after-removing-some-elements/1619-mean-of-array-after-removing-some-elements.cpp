@@ -6,21 +6,7 @@ public:
         
         int rem=n/20;
         
-        sort(arr.begin(),arr.end());
-//         int x=rem;
-//         while(x--)
-//         {
-//             arr.pop_back();
-//         }
-        
-//         reverse(arr.begin(),arr.end());
-        
-//         while(rem--)
-//         {
-//             arr.pop_back();
-//         }
-        
-        
+        sort(arr.begin(),arr.end());    
         double sum=0;
         
         for(int i=0;i<arr.size()-rem;i++)
