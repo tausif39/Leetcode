@@ -5,21 +5,21 @@ public:
         // if(s.size()==1)return 1;
         
         
-        bool flag=false;
-        int cunt=0;
+//         bool flag=false;
+//         int cunt=0;
         
-        for(int i=0;i<s.size();i++)
-        {
-            if(s[i]==' ')
-            {flag=true;break;
-            }
-            cunt++;
-        }
+//         for(int i=0;i<s.size();i++)
+//         {
+//             if(s[i]==' ')
+//             {flag=true;break;
+//             }
+//             cunt++;
+//         }
         
-        if(!flag)
-        {
-            return cunt;
-        }
+//         if(!flag)
+//         {
+//             return cunt;
+//         }
             
         int i=s.size()-1;
         
