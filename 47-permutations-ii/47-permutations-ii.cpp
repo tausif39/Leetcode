@@ -50,7 +50,7 @@ public:
         
         helper(nums, ans, v,mp);
         
-         ans.erase(unique(ans.begin(),ans.end()),ans.end());
+         
         
         set<vector<int>> s(ans.begin(),ans.end());
         ans.clear();
