@@ -1,0 +1,1 @@
+// taking one bit of all the numbers at once
