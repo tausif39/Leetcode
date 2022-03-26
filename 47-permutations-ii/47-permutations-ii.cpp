@@ -1,11 +1,11 @@
 class Solution {
 public:
     
-    void helper( vector<int>& arr, vector<vector<int>> & ans, vector<int> &v , vector<int>& mp)
+    void helper( vector<int>& arr, set<vector<int>> & ans, vector<int> &v , vector<int>& mp)
     { 
         if(v.size()==arr.size())
         {
-            ans.push_back(v);return ;
+            ans.insert(v);
         }
            
         
@@ -40,8 +40,9 @@ public:
         
         
         
-        vector<vector<int>> ans;
+        vector<vector<int>> s;
         
+        set<vector<int>> ans;
         
         vector<int> v;
         vector<int> mp(nums.size());
@@ -52,14 +53,13 @@ public:
         
          
         
-        set<vector<int>> s(ans.begin(),ans.end());
-        ans.clear();
-        for(auto se: s)
+        
+        for(auto se: ans)
         {
-            ans.push_back(se);
+            s.push_back(se);
         }
         
-        return ans;
+        return s;
         
     }
 };
