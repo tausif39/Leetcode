@@ -2,6 +2,12 @@ class Solution {
 public:
     int findPairs(vector<int>& nums, int k) 
     {
+        // unordered_map<char , int > mp;
+        
+//         
+        // for(auto f : nums) ++mp[f];
+        
+        
         sort(nums.begin(),nums.end());
         int current=INT_MIN ;
         int cnt=0;
@@ -23,7 +29,8 @@ public:
                 }
                 
             }
-        }
+        };
+        
             
             return cnt;
             
