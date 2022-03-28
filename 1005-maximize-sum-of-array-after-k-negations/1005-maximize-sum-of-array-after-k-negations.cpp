@@ -1,76 +1,24 @@
 class Solution {
 public:
-    int largestSumAfterKNegations(vector<int>& nums, int k) 
-    {
-        sort(nums.begin(),nums.end());
-        
-        int sum=0;
-        if(nums[0]<0)
-        {
-            
-        for(int i=0;i<nums.size();i++)
-        {
-           if(nums[i]<0 and k) 
-           {
-               nums[i]*=-1;k--;
-           }
-            else break;
-            
+    int find_sum(vector<int>&v, int k){
+        priority_queue<int,vector<int>,greater<int>>q;       // Mean Heap
+        for(int i=0; i<v.size(); i++)
+            q.push(v[i]);
+        while(k){                        // Negate k times ( min element will always be on top )
+            int res = -q.top();
+            q.pop();
+            q.push(res);
+            k--;
         }
-            
-            sort(nums.begin(),nums.end());
-            
+        int sum = 0;
+        while(!q.empty()){
+            sum += q.top();
+            q.pop();
         }
-        
-        for(int i=0;i<nums.size();i++)
-        {
-            
-            if(k)
-            {
-                
-            if(nums[i]<0)
-            {
-                sum=sum-nums[i];k--;
-            }
-            
-            else
-            {
-                if(nums[i]==0 and k==1)
-                {
-                    k--;
-                    continue;
-                }
-                
-               else if(k>1 and k%2==0)
-                {
-                    
-                    sum=sum+nums[i];k-=2;
-                    
-                }
-                
-                 else if(k>1 and k%2!=0)
-                {
-                    
-                    sum=sum-nums[i];k-=1;
-                    
-                }
-                
-                else 
-                {
-                    sum=sum-nums[i];k--;
-                }
-                
-            }
-                
-            }
-            
-            else sum=sum+nums[i];
-            
-            
-            
-        }
-        
         return sum;
-        
+    }
+    int largestSumAfterKNegations(vector<int>& nums, int k) {
+        int sum = find_sum(nums,k);
+        return sum;
     }
 };
