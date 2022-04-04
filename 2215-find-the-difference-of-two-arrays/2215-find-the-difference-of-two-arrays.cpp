@@ -1,68 +1,28 @@
 class Solution {
 public:
-    vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2) 
-    {
-        vector<vector<int>> ans;
-        set<int> first,second;
-        vector<int> f,s;
-        
+   vector<vector<int>> findDifference(vector<int>& nums1, vector<int>& nums2) {
+        set<int>s1;
+        set<int>s2;
         for(int i=0;i<nums1.size();i++)
-        {
-            bool flag=false;
-            
-            for(int j=0;j<nums2.size();j++)
-            {
-                if(nums1[i]==nums2[j])
-                {
-                    flag=true;
-                    break;
-                }
-                
-            }
-                if(flag==false)
-                {
-                    first.insert(nums1[i]);
-                }
-            
-        }
-        
-        
-        
+            s1.insert(nums1[i]);
         for(int i=0;i<nums2.size();i++)
+            s2.insert(nums2[i]);
+        vector<vector<int>>result;
+        vector<int>temp1;
+        vector<int>temp2;
+        for(auto it:s1)
         {
-            bool flag=false;
-            
-            for(int j=0;j<nums1.size();j++)
-            {
-                if(nums2[i]==nums1[j])
-                {
-                    flag=true;
-                    break;
-                }
-                
-            }
-                if(flag==false)
-                {
-                    second.insert(nums2[i]);
-                }
-            
+            if(s2.find(it)==s2.end())
+                temp1.push_back(it);
+        }
+        for(auto it:s2)
+        {
+            if(s1.find(it)==s1.end())
+                temp2.push_back(it);
         }
         
-        for(auto s: first)f.push_back(s);
-        
-        
-        for(auto as: second)s.push_back(as);
-        
-        
-        ans.push_back(f);
-        ans.push_back(s);
-        
-        return ans;
-        
-        
-        
-        
-        
-        
+        result.push_back(temp1);
+        result.push_back(temp2);
+        return result;
     }
 };
