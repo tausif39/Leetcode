@@ -1,37 +1,26 @@
 class Solution {
 public:
-    int lastStoneWeight(vector<int>& nums) 
-    {
+    int lastStoneWeight(vector<int>& stones) {
+        /*
+            As we've to take max 2 elements, we'll use max-heap(priority_queue)
+        */
         
+        // step 1: storing the whole vector into priority queue
+        priority_queue<int> pq(stones.begin(), stones.end());
         
-        while(nums.size()>1)
+        // we'll take top two elements and store their
+        // differences untill the size becomes 1.
+        while(pq.size() > 1)
         {
-            sort(nums.begin(),nums.end());
-            
-            int n=nums.size();
-            
-            if(nums[n-1]==nums[n-2])
-            {
-                nums.pop_back();nums.pop_back();
-            }
-            
-            else if(nums[n-1]!=nums[n-2])
-            {
-                swap(nums[n-1],nums[n-2]);
-                
-                nums[n-2]=nums[n-2]-nums[n-1];
-                
-                nums.pop_back();
-            }
-            
-            
-            
+            int top1 = pq.top();
+            pq.pop();
+            int top2 = pq.top();
+            pq.pop();
+            int dif = top1 - top2;
+            pq.push(dif);
         }
         
-        if(nums.size()==1)return nums[0];
-        
-        return 0;
-        
-        
+        // then we'll return the element
+        return pq.top();
     }
 };
