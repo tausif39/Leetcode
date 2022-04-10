@@ -1,55 +1,20 @@
+string str;
+static bool comparetor(char c1, char c2)
+{
+    
+    return str.find(c1)<str.find(c2);
+}
+
+
 class Solution {
 public:
+   
+
+ 
     
-//     static bool cmp()
-//     {
-        
-//     }
-    
-    
-    
-    string customSortString(string order, string s) 
-    {
-        
-        string ans;
-        
-        for(int i=0;i<order.size();i++)
-        {
-            for(int j=0;j<s.size();j++)
-            {
-                if(order[i]==s[j])
-                {
-                    ans.push_back(order[i]);
-                    
-                }
-            }
-            
-            
-        }
-        
-       for(int j=0;j<s.size();j++)
-       {
-           for(int i=0;i<order.size();i++)
-            {
-               if(order[i]==s[j])
-                {
-                   break;
-                }
-               
-               if(i==order.size()-1)
-               {
-                   if(order[i]!=s[j])
-                   {
-                      ans.push_back(s[j]);
-                   }
-               }
-               
-            }
-           
-        }
-        
-        
-        return ans;
-        
+    string customSortString(string order, string s) {
+        str=order;
+        sort(s.begin(),s.end(),comparetor);
+        return s;
     }
 };
