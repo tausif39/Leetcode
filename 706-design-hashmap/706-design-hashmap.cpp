@@ -1,29 +1,33 @@
 class MyHashMap {
 public:
-    map<int,int> mp;
+    
+    
+   vector<int> arr; 
     
     
     MyHashMap() {
-        
+        arr.resize(1e6+1,-1);
     }
     
     void put(int key, int value) 
     {
-        mp[key]=value;
+        arr[key]=value;
         
     }
     
     int get(int key) 
     {
-        if(mp.find(key)==mp.end())return -1;
-        // if(mp[key]==0)return -1;
-        return mp[key];
+        if(arr[key] == -1)
+            return -1;
+        
+        else
+            return arr[key];
         
     }
     
     void remove(int key) 
     {
-        mp[key]=-1;
+          arr[key]=-1;
         
     }
 };
