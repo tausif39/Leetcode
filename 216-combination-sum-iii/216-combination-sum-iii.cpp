@@ -16,9 +16,9 @@ public:
         
         for(int i=ind;i<arr.size();i++)
         {
-            // if(i>ind&& arr[i]==arr[i-1]) continue;  // if next element is same  ;
             
-            // if(arr[i]>target)break;
+            
+            if(arr[i]>target)break;
             
             //pick condition ..
             ds.push_back(arr[i]);
