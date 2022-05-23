@@ -2,26 +2,24 @@ class Solution {
 public:
     bool check(vector<int>& nums) 
     {
-        vector<int> v(nums.begin(),nums.end());
-        sort(v.begin(),v.end());
-        
-        int rotl=1;
-        int cnt =0;
         int n=nums.size();
-        while(cnt<n)
+        int count=0;
+        
+        for(int i=1;i<n; i++)
         {
-            rotate(v.begin(), v.begin()+rotl, v.end());
-            
-            if(v==nums)return true;
-            
-            cnt++;
-            
-            
-            
+            if(nums[i-1]>nums[i])
+            {
+                count++;
+            }
         }
         
+            if(nums[n-1]>nums[0])
+            {
+                count++;
+            }
         
-        return false;
+        
+        return count<=1;
         
     }
 };
