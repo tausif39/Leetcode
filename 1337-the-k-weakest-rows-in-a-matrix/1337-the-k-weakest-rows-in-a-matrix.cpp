@@ -1,43 +1,27 @@
-class Solution {
-public:
-    
-    vector<int> Weakest(vector<vector<int> >& mat, int k)
-    {
-        // no of rows;
-        int n = mat.size();
-        
-        // set is to store pairs of count and index
-        // count of 1 in ith row, {count,index};
-        set<pair<int,int> > s;
-        
-        // set will automatically sort the pair {count, index} in ascending order.
-        
-        for(int i = 0; i<n; ++i)
+// bool compare(pair<int,int>a,pair<int,int>b){
+//     if(a.first==b.first){
+//         return a.second<b.second;
+//     }
+//     return a.first<b.first;
+// }
+class Solution
+{
+    public:
+        vector<int> kWeakestRows(vector<vector < int>> &mat, int k)
         {
-            // stl function for counting frequency of 1 in current row
-            int cnt = count(mat[i].begin(),mat[i].end(),1);
-            // inserting cnt and index pair to set
-            s.insert({cnt,i});
+            int n=mat.size();
+           vector<pair<int,int>> v;
+            for (int i=0;i<n;i++)
+            {
+                v.push_back({count(mat[i].begin(), mat[i].end(), 1),i});
+            }
+            sort(v.begin(),v.end());
+            vector<int> ans;
+            int i=0;
+            while(i<k){
+                ans.push_back(v[i].second);
+                i++;
+            }
+            return ans;
         }
-        
-        vector<int> ans;
-        // first k weakest row is our answer 
-        for(auto i : s)
-        {
-            if(k == 0)
-                break;
-            ans.push_back(i.second);
-            --k;
-        }
-        
-        return ans;
-    }
-    
-    
-    vector<int> kWeakestRows(vector<vector<int>>& mat, int k) {
-
-        return Weakest(mat,k);
-        
-    }
-	// for github repository link go to my profile.
 };
