@@ -8,25 +8,6 @@ public:
         int i=0;
         
         
-//         if(intervals[i+1][0]>=intervals[i][0] and intervals[i+1][0]<=intervals[i][1]) 
-//                 {
-//                     int start=intervals[i][0];
-//                     int end=max(intervals[i+1][1],intervals[i][1]);
-                    
-//                     st.push({start,end});
-//                 i+=2;
-//                 }
-//         else
-//         {
-//             int start=intervals[i][0];
-//                     int end=intervals[i][1];
-//                     st.push_back({start,end});
-//                     i++;
-            
-//         }
-        
-        // vector<int> v=st.top();
-        
         while(i<intervals.size())
         {
             if(st.empty())
