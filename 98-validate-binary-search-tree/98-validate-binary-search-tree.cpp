@@ -12,47 +12,31 @@
 class Solution {
 public:
     
- void inorder(TreeNode* root, vector<int> &v){
-        if(root==NULL) return;
+    bool  helper(TreeNode* root,int long long maxvalue=1e10, int long long minvalue=-1e10) 
+    {
+        if(root==NULL)return true;
+          
+        bool right=helper(root->right,maxvalue,root->val);
         
-        inorder(root->left,v);   // left
-        v.push_back(root->val);       // data
-        inorder(root->right,v);   // right
+        bool left= helper(root->left,root->val,minvalue);
+        
+        if(right and left and root->val>minvalue and root->val<maxvalue)return true;
+        
+        return false;
+        
     }
     
     
-    // vector<int> inorderTraversal(TreeNode* root) {
-    //     vector<int> v;
-    //     inorder(root,v);
-    //     return v;
-    // }
     
     bool isValidBST(TreeNode* root) 
     {
         
-        vector<int> v;
-        inorder(root,v);
-        
-        // return helper(root);
-        
-        int left=0,node=1,right=2;
-        
-        while(right<v.size())
-        {
-            if(v[left]>=v[node] || v[right]<=v[node])return false;
-            
-            ++left,++node,++right;
-        }
         
         
-        while(node<v.size())
-        {
-             if(v[left]>=v[node])return false;
-            ++left,++node;
-        }
+        return helper(root);
         
         
-        return true;
+        
      
         
         
