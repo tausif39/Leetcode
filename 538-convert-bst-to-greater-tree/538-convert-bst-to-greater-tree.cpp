@@ -12,19 +12,67 @@
 class Solution {
 public:
     
-   void solve(TreeNode *root,int& total)
-    {
-        if(!root) return ;
-        solve(root->right,total);
-        total+=root->val;
-        root->val=total;
-        solve(root->left,total);
+    unordered_map<int,int> mp;
+    
+     void inorde(TreeNode* root){
+        if(root==NULL) return;
+        
+        inorde(root->left);   // left
+        root->val=mp[root->val];       // data
+        inorde(root->right); 
+         // right
+    }
+    
+    
+    
+    void inorder(TreeNode* root, vector<int> &v){
+        if(root==NULL) return;
+        
+        inorder(root->left,v);   // left
+        v.push_back(root->val);       // data
+        inorder(root->right,v);   // right
     }
     
     TreeNode* convertBST(TreeNode* root) 
     {
-        int total=0;
-        solve(root,total);
-        return root;    
+        if(!root)return root;
+        
+        // unordered_map<int,int> mp;
+        
+        vector<int> v;
+        inorder(root,v);
+        
+        int n=v.size();
+        sort(v.begin(),v.end());
+        
+        vector<int> suff(n);
+        
+        suff[n-1]=v[n-1];
+        
+        
+        
+       
+        
+        
+        for(int i=n-2;i<v.size();i--)
+        {
+            
+            suff[i]=suff[i+1]+ v[i];
+            
+        }
+        
+        
+        for(int i=0;i<n;i++)
+        {
+            
+            mp[v[i]]=suff[i];
+            
+        }
+        
+        inorde(root);
+        // for(int i:)cout<<i<<" ";
+        
+        return root;
+        
     }
 };
