@@ -1,40 +1,23 @@
-/**
- * Definition for singly-linked list.
- * struct ListNode {
- *     int val;
- *     ListNode *next;
- *     ListNode(int x) : val(x), next(NULL) {}
- * };
- */
 class Solution {
 public:
-    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) 
-    {
-        ListNode *  p=headA;
-        ListNode *  q=headB;
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        // Initializing the two pointers
+        ListNode *ptr1 = headA;
+        ListNode *ptr2 = headB;
         
-        
-        unordered_map<ListNode *, int> mp;
-        
-        
-        while(p)
-        {
-            mp[p]=p->val;
-            p=p->next;
+        while(ptr1 != ptr2){
+            ptr1 = ptr1->next;
+            ptr2 = ptr2->next;
             
-        }
-        
-        while(q)
-        {
-            if(mp[q]!=0)return q;
-            q=q->next;
+            // break the loop if they reach the end together or collide
+            if(ptr1 == ptr2) break;
             
+            // if the pointer reaches the end of A, go to B and vice versa for ptr2
+            if(ptr1 == NULL) ptr1 = headA;
+            if(ptr2 == NULL) ptr2 = headB;
+ 
         }
-        
-        
-        
-        return NULL;
-        
-        
+        // return the collided pointer
+        return ptr1;
     }
 };
