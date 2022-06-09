@@ -1,0 +1,1 @@
+**array containg 1s with k 0s**
