@@ -1,78 +1,60 @@
-class Solution {
+class DisjointSet {
+
+private:
+    int parent[100000];
+    
+    void makePar(int nodes) {
+        for(int i = 0; i < nodes; i++)
+            this->parent[i] = i;
+    }
 public:
     
-    void dfs(vector<bool> &vis,int node, vector<int> adj[],long long &cnt, stack<int> &st) 
-    {
-        vis[node]=true;
+    DisjointSet() {
+        makePar(100000);
+    }
+    
+    DisjointSet(int nodes) {
+        makePar(nodes);
+    }
+    
+    int findPar(int n) {
+        if(parent[n] == n)
+            return n;
+        return parent[n] = findPar(parent[n]);
+    }
+    
+    void makeUnion(int u, int v) {
+        u = findPar(u);
+        v = findPar(v);
         
-        for(auto it: adj[node])
-        {
-            if(!vis[it])
-            {
-                dfs(vis,it,adj,cnt,st);
-                
-            }
-            
-        }
-        
-        cnt++;
-        
-        
+        if(u < v)
+            parent[v] = u;
+        else
+            parent[u] = v;
     }
     
     
-    long long countPairs(int n, vector<vector<int>>& graph) 
-    {
+};
+
+class Solution {
+public:
+    long long countPairs(int n, vector<vector<int>>& edges) {
         
+        DisjointSet dsu(n);
         
-        long long ok=(long long)n;
+        for(vector<int> &edge: edges)
+            dsu.makeUnion(edge.front(), edge.back());
         
-        long long total =(ok*(ok-1))/2;
+        unordered_map<int,int> componentNodes;
+        for(int i = 0; i < n; i++)
+            componentNodes[dsu.findPar(i)]++;
         
-        vector<int> adj[n+1];
+        unsigned long long unreachableNodes = 0LL;
         
-        for(int i=0;i<graph.size();i++)
-        {
-            adj[graph[i][0]].push_back(graph[i][1]);
-            adj[graph[i][1]].push_back(graph[i][0]);
-            
-        }
+        for(pair<const int, int> &component: componentNodes)
+            unreachableNodes += (long long)component.second * ((long long)n - (long long)component.second);
+
         
-        long long res=0;
-        
-        vector<bool> vis(n+1,false);
-        
-        for(int i=0;i<n;i++)
-        {
-            long long cnt=0;
-            stack<int> st;
-            if(vis[i]==false)
-            {
-                dfs(vis,i,adj,cnt,st);
-                
-            }
-            
-            
-            // cnt=st.size();
-            if(cnt>1)
-            {
-                // cout<<cnt<<" ";
-                int z=(cnt*(cnt-1))/2;
-                res+=z;
-                cout<<res<<" ";
-                
-            }
-            
-            
-            
-        }
-        
-        // cout<<res;
-        
-        return total-res;
-        
-        
-        
-        
+        return unreachableNodes >> 1LL;
     }
 };
