@@ -26,22 +26,11 @@ public:
         
     }
     
-    
-    
+  
     bool isValidBST(TreeNode* root) 
     {
         
-        
-        
         return helper(root);
-        
-        
-        
-     
-        
-        
-        
-        
-        
+      
     }
 };
