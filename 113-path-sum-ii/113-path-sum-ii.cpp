@@ -12,7 +12,7 @@
 class Solution {
 public:
     
-    void dfs(TreeNode* root,vector<int> v,vector<vector<int>> &ans, int targetSum,int sum) 
+    void dfs(TreeNode* root,vector<int> &v,vector<vector<int>> &ans, int targetSum,int sum) 
     {
         if(root==NULL)return;
         
@@ -27,7 +27,7 @@ public:
             
             sum=0;
             
-            v.clear();
+            v.pop_back();
             
             return ;
                     
@@ -40,7 +40,7 @@ public:
         dfs(root->left,v,ans,targetSum,sum) ;
         dfs(root->right,v,ans,targetSum,sum) ;
         
-
+        v.pop_back();
         
     }
     
