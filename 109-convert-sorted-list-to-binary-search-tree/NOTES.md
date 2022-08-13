@@ -1,1 +1,1 @@
-**We will be using slow and fast approach of linked list to reach the middle of the list inorder to apply the concept of binary search which efficiently manitains the balanced criteria of the BST.**
+​
