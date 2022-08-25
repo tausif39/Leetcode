@@ -1,6 +1,7 @@
 class Solution {
 public:
-	bool canConstruct(string ransomNote, string magazine) {
+	bool canConstruct(string ransomNote, string magazine) 
+    {
 		int arr[26] = {0};
 		for(auto ch:magazine){
 			arr[ch - 'a']++;
