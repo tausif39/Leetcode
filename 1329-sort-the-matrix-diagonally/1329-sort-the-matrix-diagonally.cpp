@@ -3,6 +3,7 @@ public:
     vector<vector<int>> diagonalSort(vector<vector<int>>& mat) {
     int j, m=mat.size(), n=mat[0].size(), k, temp;
     vector<int>v; int l=1;
+        
     for(int i=0; i<m; i++)
     {
         j=0; temp=i;
@@ -12,6 +13,7 @@ public:
         while(i<m && j<n)  mat[i++][j++]=v[k++];
         v.clear(); i=temp;
     }
+        
     for(int i=1; i<n; i++)
     {
         j=0; temp=i;
@@ -21,7 +23,9 @@ public:
         while(i<n && j<m)  mat[j++][i++]=v[k++];
         v.clear(); i=temp;
     }
+        
     return mat;
+        
 }
 
 };
