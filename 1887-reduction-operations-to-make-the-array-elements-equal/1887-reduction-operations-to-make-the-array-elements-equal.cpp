@@ -2,12 +2,12 @@ class Solution {
 public:
     int reductionOperations(vector<int>& nums) 
     {
-        map<long long , long long> mp;
+//         map<long long , long long> mp;
         
-        for(int i=0;i<nums.size();i++)
-        {
-            mp[nums[i]]++;
-        }
+//         for(int i=0;i<nums.size();i++)
+//         {
+//             mp[nums[i]]++;
+//         }
         
         int ans=0;
         
@@ -21,7 +21,7 @@ public:
                 ans+=nums.size()-i;
             }
             
-            mp[nums[i-1]]+=(long long)nums[i];
+            // mp[nums[i-1]]+=(long long)nums[i];
             
             
         }
