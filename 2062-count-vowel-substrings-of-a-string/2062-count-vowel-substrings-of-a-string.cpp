@@ -14,7 +14,7 @@ public:
         
         for(int i=0;i<s.size();i++)
         {
-            if(!vowels1(s[i]))return false;;
+            if(!vowels1(s[i]))return false;
             if(s[i]=='a')a1++;
             else if(s[i]=='e')e1++;
             else if(s[i]=='i')i1++;
@@ -33,12 +33,12 @@ public:
         
         for(int i=0;i<word.size();i++)
         {
-            if(!vowels1(word[i]))continue;
+            // if(!vowels1(word[i]))continue;
             string s;
             
             for(int j=i;j<word.size();j++)
             {
-                
+                if(!vowels1(word[j]))break;
                 s+=word[j];
                 if(vowelss(s))cnt++;
             }
