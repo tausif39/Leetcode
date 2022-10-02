@@ -24,7 +24,7 @@ class Solution {
     if(cnt2 > 0){
         for(int i = 0 ; i < 32 ; i++){
 		    int x = 1<<i;
-            if( (num1&x) == 0 ){
+            if( (ans&x) == 0 ){
                 ans =  ans | x ;
                 cnt2--;
                 if(cnt2 == 0) break;
