@@ -1,49 +1,25 @@
 class Solution {
 public:
-    int minCost(string colors, vector<int>& neededTime) 
-    {
+    int minCost(string colors, vector<int>& neededTime) {
+        int sum = 0 ;
         
-        
-        // vector<int > v;
-        
-        char current ='A'; 
-        
-        int i=0;
-        
-        int time=0;
-        
-        while(i<colors.size())
-        {
-            if(current!=colors[i])
-            {
-                current=colors[i];
-                i++;
-            }
-            else
-            {
-                    vector<int>v;
-                    v.push_back(neededTime[i-1]);
-                      while(current==colors[i] and (i<colors.size()))
-                      {
-                          v.push_back(neededTime[i]) ;
-                          i++;
-
-                      }
-                        
-                    sort(v.rbegin(),v.rend());
-                    
-                    int sum=accumulate(v.begin(),v.end(),0);
-                    sum-=v[0];
-                    time+=sum; 
-            }
+        for(int i = 1 ; i < neededTime.size() ; i++){
+            int tempSum = neededTime[i-1] ; 
+            int max = neededTime[i-1] , count = 1 ;
             
-            // i++;
             
-         
+            while(colors[i]==colors[i-1]){
+                tempSum += neededTime[i] ; 
+                if(max <  neededTime[i])max =  neededTime[i] ;
+                i++ ;
+                count++;
+                if(i==neededTime.size()) break ;
+            }
+            if(count ==1) continue ;
+            sum +=tempSum - max ;
             
         }
         
-        return time;
-        
+        return sum ;
     }
 };
