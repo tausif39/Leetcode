@@ -15,9 +15,18 @@ public:
                 }
 				// delete the entire column at the position `idx`
 				// here we set them with '*' and this works similir to deleting chars at index `idx`.
-                for(auto &a: strs){
-                    a[idx]='*';
+                // for(auto &a: strs){
+                //     a[idx]='*';
+                // }
+                
+                for(int k=0;k<strs.size();k++)
+                {
+                    strs[k].erase(strs[k].begin()+idx);
+
                 }
+                
+                
+                
 				// reiterate from the starting and find the next adjacent pairs then are not lexicographically arrange.
 				// i=0, coz i++ will make it i=1
                 i=0;
