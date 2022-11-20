@@ -14,7 +14,7 @@ public:
         inorder(root, nums);
         vector<vector<int>> res;
         
-        for (auto num: queries) {
+        for (auto &num: queries) {
             int ind = upper_bound(nums.begin(), nums.end(), num) - nums.begin();
             int ind2 = lower_bound(nums.begin(), nums.end(), num) - nums.begin();
             
