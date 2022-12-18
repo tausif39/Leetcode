@@ -3,7 +3,9 @@ public:
     
     vector<int> dailyTemperatures(vector<int>& temperatures) 
     { 
+        
         stack< pair<int, int>> st;
+        
         
         int n=temperatures.size();
         
@@ -35,9 +37,6 @@ public:
                     // ans[i]=0;
                     st.push({temperatures[i],i});
                 }
-                
-                
-                
                 else
                 {
                     ans[i]=st.top().second-i;
