@@ -1,0 +1,2 @@
+max subarray sum= total sum of array - sum of non contributing elements
+//  so in this type of question we can change the sign of all elements and apply kadane's algo so that we can find max sum of non contributing elements
