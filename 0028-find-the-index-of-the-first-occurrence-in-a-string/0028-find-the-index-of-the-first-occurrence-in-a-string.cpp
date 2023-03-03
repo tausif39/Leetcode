@@ -5,7 +5,6 @@ public:
     {
         int idx= haystack.find(needle);
         
-        
         return idx;
         
         
