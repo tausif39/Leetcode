@@ -1,60 +1,58 @@
-class DisjointSet {
-
-private:
-    int parent[100000];
+class DSU{
     
-    void makePar(int nodes) {
-        for(int i = 0; i < nodes; i++)
-            this->parent[i] = i;
-    }
-public:
+    vector<int>parent;
     
-    DisjointSet() {
-        makePar(100000);
-    }
-    
-    DisjointSet(int nodes) {
-        makePar(nodes);
-    }
-    
-    int findPar(int n) {
-        if(parent[n] == n)
-            return n;
-        return parent[n] = findPar(parent[n]);
-    }
-    
-    void makeUnion(int u, int v) {
-        u = findPar(u);
-        v = findPar(v);
+    vector<int>size;
+	
+   public: 
+    DSU(int n)
+    {
         
-        if(u < v)
-            parent[v] = u;
-        else
-            parent[u] = v;
+        parent.resize(n+1,0);
+        size.resize(n+1,1);
+        for(int i=0;i<n;i++){
+            parent[i]=i;
+        }
     }
     
-    
+    int findParent(int k){
+        if(parent[k]==k) return k;
+        return parent[k]=findParent(parent[k]);
+    }
+    void union_set(int a,int b){
+        int nx=findParent(a);
+        int ny=findParent(b);
+        if(nx!=ny){
+            if(size[nx]<size[ny]){
+                swap(nx,ny);
+            }
+            
+            parent[ny]=nx;
+            
+            size[nx]+=size[ny];
+            
+        }
+    }
 };
-
 class Solution {
 public:
     long long countPairs(int n, vector<vector<int>>& edges) {
+        DSU d(n);
+        unordered_map<int,int>mp;
+        for (auto &e : edges) {
+            d.union_set(e[0], e[1]);
+        }
         
-        DisjointSet dsu(n);
-        
-        for(vector<int> &edge: edges)
-            dsu.makeUnion(edge.front(), edge.back());
-        
-        unordered_map<int,int> componentNodes;
-        for(int i = 0; i < n; i++)
-            componentNodes[dsu.findPar(i)]++;
-        
-        unsigned long long unreachableNodes = 0LL;
-        
-        for(pair<const int, int> &component: componentNodes)
-            unreachableNodes += (long long)component.second * ((long long)n - (long long)component.second);
+        for(int i=0;i<n;i++){
+            int p=d.findParent(i);
+            mp[p]++;
+        }
+        long count = long(n) * (n - 1) / 2;
+        for (auto [a, b] : mp) {
+            cout << a << " " << b << endl;
+            count -= (long long)b*(b-1)/2;
 
-        
-        return unreachableNodes >> 1LL;
+        }
+        return count;
     }
 };
