@@ -22,7 +22,7 @@ public:
             ans = max(pref[i] / (i + 1), ans);
         }
 
-    return ans;
+        return ans;
         
     }
 };
