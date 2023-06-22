@@ -37,7 +37,7 @@ public:
             // cout<<right<<" ";
             
             sum+=nums[right];
-            cout<<sum<<" ";
+            // cout<<sum<<" ";
             ans[mid]=sum/elem;
             sum-=nums[left];
             // sum+=right;
