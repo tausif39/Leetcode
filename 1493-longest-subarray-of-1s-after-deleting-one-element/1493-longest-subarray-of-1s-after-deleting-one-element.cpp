@@ -3,48 +3,28 @@ public:
     int longestSubarray(vector<int>& nums) 
     {
         
-        int cnt0=0;
+        int cnt1=0,cnt2=0,i=0,j=0,ans=0;
         
-        int len=0;
-        int maxlen=0;
-        
-        int j=0;
-        
-        bool flag=false;
-        
-        for(int i=0;i<nums.size();i++)
+        while (j<nums.size()) 
         {
-            if(nums[i]==0)
+            
+            if (nums[j]==1) cnt1++;
+            if (nums[j]==0) cnt2++;
+            
+            while (cnt2>1) 
             {
-                cnt0++;
-                if(cnt0==2)j++;
-                else j=i;
+                
+                if (nums[i]==1) cnt1--;
+                if (nums[i]==0) cnt2--;
+                
+                i++;
             }
             
-            if(cnt0==0 || cnt0==1)
-            {
-                
-                    len++;
-                
-                    maxlen=max(maxlen,len-1);
-                    maxlen=max(maxlen,i-j);
-                
-                
-                if(cnt0==1)flag=true;
-                
-            }
-            else 
-            {
-                
-                len=0;
-                cnt0=0;
-            }
-            
+            if (cnt2) ans=max(ans,cnt1);
+            else ans=max(ans,cnt1-1);
+            j++;
         }
         
-        if(!flag)return nums.size()-1;
-        
-        return maxlen;
-        
+        return ans;
     }
 };
