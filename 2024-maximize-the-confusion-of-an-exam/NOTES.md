@@ -1,1 +1,1 @@
-**key to realize this question is actually asking to find maximum substring of 'T' which contains at most k 'F' or maximum substring of 'F' which contains at most k 'T'.**
+​
