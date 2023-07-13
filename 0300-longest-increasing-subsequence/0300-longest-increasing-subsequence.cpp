@@ -35,7 +35,7 @@ public:
     {
         int n=nums.size();
         
-         vector<vector<int>> dp (n+1,vector<int>(n+2,-1));
+         vector<vector<int>> dp (n+1,vector<int>(n+1,-1));
           
         return help(nums,dp, 0 ,-1);             
         
