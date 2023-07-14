@@ -5,7 +5,6 @@ public:
 
     int func(vector<int>&nums,int target,int i)
     {
-        // if(i>=nums.size())return INT_MIN;
         if(i==nums.size()-1)return 0;
 
         if(dp[i]!=-1)return dp[i];
