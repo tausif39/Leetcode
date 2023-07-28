@@ -8,7 +8,7 @@ public:
         int cnt=0;
         prime[0]=prime[1]=false;
    
-        for(int i=0;i<n;i++)
+        for(int i=2;i<n;i++)
         {
             
             if(prime[i])
@@ -24,10 +24,7 @@ public:
             }
             
         }
-        
-        
-        
-       // for(auto it:prime)if(it)cnt++;
+
         
         
         return cnt;
