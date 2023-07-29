@@ -4,7 +4,7 @@ public:
     int countServers(vector<vector<int>>& grid) 
     {
 
-        map<int ,int> rows,col;
+        unordered_map<int ,int> rows,col;
         
         for(int i=0;i<grid.size();i++)
         {    
