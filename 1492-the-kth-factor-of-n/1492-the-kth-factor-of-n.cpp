@@ -34,11 +34,11 @@ public:
         
         reverse(right.begin(),right.end());
         
-        for(auto it:left)cout<<it<<" ";
+//         for(auto it:left)cout<<it<<" ";
         
-        cout<<endl;
+//         cout<<endl;
         
-        for(auto it:right)cout<<it<<" ";
+//         for(auto it:right)cout<<it<<" ";
         
         if(k<=left.size())
         {
