@@ -1,85 +1,37 @@
 class Solution {
 public:
-    
-    int compress(vector<char>& s)
-    {
-        
-        int j=0;
-        
-        int i=0;
-        
-        
-        while(i<s.size())
-        {
-            
-            if(j==s.size())break;
-            
-            char current=s[j];
-            
-            int len=0;
-            
-            while(j<s.size() and s[j]==current)
-            {           
-                j++; 
-                len++;
+    int compress(vector<char>& chars) {
+        vector<char> v;
+        int cnt=1;
+        char ch= chars[0];
+        for (int i=1; i<chars.size(); i++){
+            if (chars[i]== ch){
+                cnt++;
             }
-            
-            // cout<<len;
-            
-            cout<<i<<" ";
-       
-            if(len==1)
-            {
-                s[i]= current;
-                i++;
-                continue;
-            }
-            
-            
-            s[i]= current;
-            
-            
-            
-            string a= to_string(len);
-            
-            
-            
-            if(a.size()==1)
-            {
-                
-                s[i+1]=a[0];
-                i+=2;
-                
-            }
-            
-            else 
-            {
-                i++;
-                for(int k=0;k<a.size();k++)
-                {
-                    s[i]=a[k];
-                    i++;
+            else{
+                v.push_back(ch);
+                ch= chars[i];
+                if (cnt!=1){
+                    string temp;
+                    while (cnt>0){
+                        temp+= (cnt%10)+'0';
+                        cnt/= 10;
+                    }
+                    for (int i=temp.size()-1; i>=0; i--)v.push_back(temp[i]);
                 }
-                
-            
+                cnt=1;
             }
-         
-            
         }
-        
-        
-        int k=s.size();
-        
-        k-=i;
-        
-        cout<<k;
-        
-        while(k--)s.pop_back();
-        
-        
-        
-        return s.size() ;
-        
-        
+        if (cnt>=1)v.push_back(ch);
+        if (cnt>=2){
+                string temp;
+                while (cnt>0){
+                    temp+= (cnt%10)+'0';
+                    cnt/= 10;
+                }
+                for (int i=temp.size()-1; i>=0; i--)v.push_back(temp[i]);
+        }
+        chars= v;
+        return v.size();
     }
 };
