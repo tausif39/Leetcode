@@ -21,7 +21,6 @@ public:
             }
             if(sum<=threshold){
                 e=mid-1;
-                ans=mid;
             }
             else
                 s=mid+1;
